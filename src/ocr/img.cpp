@@ -143,34 +143,3 @@ namespace ocr::img {
         return res;
     }
 }
-
-// #include <limits>
-//
-// std::vector<std::span<const cv::Rect>> Model::part(const std::span<const cv::Rect> src) const {
-//     const auto n = src.size(); // TODO if (!n) return {};
-//
-//     std::vector<float> r(n);
-//     std::vector<float> s(n + 1, 0.f);
-//
-//     for (uint64_t i = 0; i < n; ++i){
-//         r[i] = static_cast<float>(src[i].width) / src[i].height; // TODO Rect2f
-//         s[i + 1] = s[i] + r[i];
-//     }
-//
-//     std::vector<float>    d(n + 1, std::numeric_limits<float>::infinity());
-//     std::vector<uint64_t> p(n + 1);
-//     d[0] = 0.f;
-//
-//     for (uint64_t i = 1; i <= n; ++i)
-//         for (uint64_t j = i > conf.max ? i - conf.max : 0; j < i; ++j) {
-//             const auto c = d[j] + static_cast<float>(i - j) * r[i - 1] - (s[i] - s[j]);
-//             if (c >= d[i]) continue;
-//             d[i] = c;
-//             p[i] = j;
-//         }
-//
-//     std::vector<std::span<const cv::Rect>> dst;
-//     for (uint64_t i = n; i > 0; i = p[i]) dst.emplace_back(src.subspan(p[i], i - p[i]));
-//
-//     return dst;
-// }
