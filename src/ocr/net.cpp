@@ -91,24 +91,3 @@ namespace ocr::net {
         return res;
     }
 }
-
-// if (i == roi.size()) { res.emplace_back("\n"); continue; }
-// std::vector<std::string> Model::ctc(const std::span<const float> tsr, const uint64_t num) const {
-//     std::vector<std::string> res(num);
-//     for (uint64_t b = 0, cnt = 0, len = tsr.size() / num / DICT_SIZE; b < num; ++b) {
-//         res[b].reserve(len << 2);
-//         float sum = 0.0f;
-//         for (uint64_t l = 0, pre = DICT_SIZE; l < len; ++l) {
-//             const auto spn = tsr.subspan((b * len + l) * DICT_SIZE, DICT_SIZE);
-//             const auto idx = std::ranges::max_element(spn) - spn.begin();
-//             if (idx != 0 && idx != pre) { // BLANK -> [0]
-//                 ++cnt;
-//                 sum += *(idx + spn.begin());
-//                 res += dict[idx].data();
-//             }
-//             pre = idx;
-//         }
-//         if (cnt == 0 || sum / static_cast<float>(cnt) < conf.arg[4]) res[b].clear();
-//     }
-//     return res;
-// }
